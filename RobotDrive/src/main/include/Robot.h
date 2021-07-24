@@ -4,7 +4,19 @@
 
 #pragma once
 
+#include <string>
 #include <frc/TimedRobot.h>
+#include <frc/smartdashboard/SendableChooser.h>
+
+#include <frc/Joystick.h>
+#include <frc/BuiltInAccelerometer.h>
+#include <frc/DriverStation.h>
+#include <frc/DoubleSolenoid.h>
+#include <frc/Servo.h>
+#include "rev/CANSparkMax.h"
+
+
+using namespace frc;
 
 class Robot : public frc::TimedRobot {
  public:
@@ -22,4 +34,14 @@ class Robot : public frc::TimedRobot {
 
   void TestInit() override;
   void TestPeriodic() override;
+  
+  const int rMotorFrontNum = 13;
+  const int rMotorBackNum = 16;
+  const int lMotorFrontNum = 2;
+  const int lMotorBackNum = 3; 
+
+  rev::CANSparkMax * lMotorFront = new rev::CANSparkMax(lMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
+  rev::CANSparkMax * lMotorBack = new rev::CANSparkMax(lMotorBackNum, rev::CANSparkMax::MotorType::kBrushless);
+  rev::CANSparkMax * rMotorBack = new rev::CANSparkMax(rMotorBackNum, rev::CANSparkMax::MotorType::kBrushless);
+  rev::CANSparkMax * rMotorFront = new rev::CANSparkMax(rMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
 };
